@@ -1,9 +1,26 @@
 .input {
-    width: full;
-    height: 50px;
-    border-radius: 8px;
+    background-color: var(--background);
+    border: 1px solid var(--input);
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: calc(var(--radius) - 2px);
+    max-width: 24rem;
+    display: inline-block;
 }
 
 .error {
     color: red;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.label {
+    margin-bottom: 0.25rem;
+}
+
+.readonly {
+    opacity: 0.6;
 }

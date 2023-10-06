@@ -8,6 +8,12 @@ input,
 button,
 textarea,
 select {
-    margin: 0;
-    font: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  text-transform: none;
 }

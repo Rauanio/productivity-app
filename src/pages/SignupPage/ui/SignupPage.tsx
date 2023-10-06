@@ -5,7 +5,7 @@ import { SignUpSchemaType, signUpSchema } from '@/shared/types/signUpSchema';
 import { useSignup } from '@/hooks/useSignup';
 import { useGithubAuth } from '@/hooks/useGithubAuth';
 import { useGoogleAuth } from '@/hooks/useGoogleAuth';
-import { Input } from '@/shared/ui/Input/Input';
+import { Button, Input } from '@/shared/ui';
 
 const SignupPage = () => {
   const { isLoading, onSignup } = useSignup();
@@ -35,41 +35,45 @@ const SignupPage = () => {
         <h1>SignUp</h1>
         {isLoading && <div>Loading...</div>}
         <Input
+          label="Username"
           type="text"
-          placeholder="username"
+          placeholder="Vasya"
           register={register('username')}
           error={errors.username}
         />
         <Input
+          label="Email"
           type="email"
-          placeholder="email"
+          placeholder="sobaka@gmail.com"
           register={register('email')}
           error={errors.email}
         />
         <Input
+          label="Password"
           type="password"
           placeholder="password"
           register={register('password')}
           error={errors.password}
         />
         <Input
+          label="Confirm password"
           type="password"
           placeholder="confirm password"
           register={register('passwordConfirm')}
           error={errors.passwordConfirm}
         />
-        <button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading}>
           SignUp
-        </button>
+        </Button>
       </form>
       <GoogleButton
         label="Sign up with Google"
         type="dark"
         onClick={onGoogleAuth}
       />
-      <button type="button" onClick={onGithubAuth}>
+      <Button type="button" onClick={onGithubAuth}>
         onGithub
-      </button>
+      </Button>
     </div>
   );
 };

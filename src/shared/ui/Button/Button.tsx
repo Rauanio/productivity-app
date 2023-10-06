@@ -18,27 +18,34 @@ export enum ButtonSize {
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
   size?: ButtonSize;
   theme?: ButtonTheme;
   disabled?: boolean;
+  fullWidth?: boolean;
   children: ReactNode;
 }
 
 export const Button = (props: ButtonProps) => {
   const {
+    className,
     size = ButtonSize.S,
     theme = ButtonTheme.CONTAINED,
     disabled,
+    fullWidth,
     children,
     ...otherProps
   } = props;
   return (
     <button
-      className={clsx(cls.btn, {
-        [cls.size_s]: ButtonSize.S,
-        [cls.theme]: theme,
-        [cls.disabled]: disabled,
-      })}
+      className={clsx(
+        cls.btn,
+        {
+          [cls.disabled]: disabled,
+          [cls.fullWidth]: fullWidth,
+        },
+        [className, cls[theme], cls[size]]
+      )}
       type="button"
       disabled={disabled}
       {...otherProps}

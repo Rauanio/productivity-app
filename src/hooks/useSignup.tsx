@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { pb } from '@/shared/api/pocketbase';
 import { SignUpSchemaType } from '@/shared/types/signUpSchema';
+import { pb } from '@/shared/api/pocketbase';
 
 export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +23,7 @@ export const useSignup = () => {
       setIsLoading(false);
     }
 
-    navigate('/login');
+    navigate('/');
   }
 
   return {

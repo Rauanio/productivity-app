@@ -1,26 +1,42 @@
 import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
+import clsx from 'clsx';
+import { InputHTMLAttributes } from 'react';
 import cls from './Input.module.scss';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+  label?: string;
   type?: string;
   placeholder?: string;
   readonly?: boolean;
   register?: UseFormRegisterReturn;
+  fullWidth?: boolean;
   error?: FieldError;
 }
 
 export const Input = (props: InputProps) => {
-  const { placeholder, readonly, type, register, error, ...inputProps } = props;
+  const {
+    className,
+    label,
+    placeholder,
+    readonly,
+    type,
+    register,
+    fullWidth,
+    error,
+    ...otherProps
+  } = props;
 
   return (
-    <div>
+    <div className={clsx(cls.inputWrapper, { [cls.readonly]: readonly })}>
+      <div className={cls.label}>{label}</div>
       <input
         {...register}
         type={type}
         placeholder={placeholder}
         readOnly={readonly}
-        className={cls.input}
-        {...inputProps}
+        className={clsx(cls.input, { [cls.fullWidth]: fullWidth }, [className])}
+        {...otherProps}
       />
       {error && <p className={cls.error}>{error.message}</p>}
     </div>
