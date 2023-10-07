@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
 import clsx from 'clsx';
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, memo } from 'react';
 import cls from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -14,7 +14,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: FieldError;
 }
 
-export const Input = (props: InputProps) => {
+export const Input = memo((props: InputProps) => {
   const {
     className,
     label,
@@ -41,4 +41,4 @@ export const Input = (props: InputProps) => {
       {error && <p className={cls.error}>{error.message}</p>}
     </div>
   );
-};
+});

@@ -12,12 +12,14 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
     "clsx": "^2.0.0",
+    "lucide-react": "^0.284.0",
     "pocketbase": "^0.18.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-button": "^0.7.2",
     "react-hook-form": "^7.46.2",
     "react-router-dom": "^6.15.0",
+    "vite-plugin-svgr": "^4.1.0",
     "zod": "^3.22.2"
   },
   "devDependencies": {

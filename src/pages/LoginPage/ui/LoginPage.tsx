@@ -1,18 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from 'react-router-dom';
 import { LoginSchemaType, loginSchema } from '@/shared/types/loginSchema';
 import { useLogin } from '@/hooks/useLogin';
-import { useGoogleAuth } from '@/hooks/useGoogleAuth';
-import { useGithubAuth } from '@/hooks/useGithubAuth';
-import { Button, Input } from '@/shared/ui';
+import { AppLink, Button, Input, Text } from '@/shared/ui';
+import { TextAlign, TextTheme } from '@/shared/ui/Text/Text';
+import { AlternativeAuth } from '@/components/AlternativeAuth/AlternativeAuth';
 import cls from './LoginPage.module.scss';
-import { ButtonTheme } from '@/shared/ui/Button/Button';
 
 const LoginPage = () => {
   const { isLoading, onLogin } = useLogin();
-  const { onGoogleAuth } = useGoogleAuth();
-  const { onGithubAuth } = useGithubAuth();
+
   const {
     register,
     handleSubmit,
@@ -27,9 +24,14 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={cls.signup}>
-      <h2>Create an account</h2>
-      <p className={cls.text}>Enter your email below to create your account</p>
+    <div className="authForm">
+      <Text title="Login to your account" />
+      <Text
+        text="Enter your email below to login on your account"
+        theme={TextTheme.MUTED}
+        className="formText"
+      />
+      <AlternativeAuth />
       {isLoading && <h1>Loading...</h1>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
@@ -48,27 +50,15 @@ const LoginPage = () => {
           register={register('password')}
           error={errors.password}
         />
-        <Button
-          fullWidth
-          type="submit"
-          className={cls.loginBtn}
-          disabled={isLoading}
-        >
+        <Button fullWidth type="submit" disabled={isLoading}>
           Login
         </Button>
       </form>
-      <p className={cls.alternative}>Or continue with</p>
-      <div className={cls.alternativeBtns}>
-        <Button theme={ButtonTheme.OUTLINED} onClick={onGoogleAuth}>
-          Google
-        </Button>
-        <Button theme={ButtonTheme.OUTLINED} onClick={onGithubAuth}>
-          Github
-        </Button>
-      </div>
 
-      <p>Нету аккаунта ? зарегистрируйтесь</p>
-      <Link to="/signup">зарегистрироватся</Link>
+      <div className={cls.link}>
+        <Text text={`Don't have an account?`} align={TextAlign.CENTER} />
+        <AppLink to="/signup">Sign up</AppLink>
+      </div>
     </div>
   );
 };

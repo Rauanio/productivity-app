@@ -1,6 +1,6 @@
 import { pb } from '@/shared/api/pocketbase';
 import cls from './MainPage.module.scss';
-import { Button, Input } from '@/shared/ui';
+import { Input } from '@/shared/ui';
 
 const MainPage = () => {
   return (
@@ -9,7 +9,6 @@ const MainPage = () => {
       MainPage
       <div>
         <Input label="city" placeholder="mamma" />
-        <Button>sfas</Button>
       </div>
     </div>
   );

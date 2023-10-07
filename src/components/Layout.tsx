@@ -5,10 +5,9 @@ export const Layout = () => {
   return (
     <>
       <Header />
-      <div>
+      <main className="container">
         <Outlet />
-      </div>
-      123131
+      </main>
     </>
   );
 };

@@ -1,16 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import GoogleButton from 'react-google-button';
 import { SignUpSchemaType, signUpSchema } from '@/shared/types/signUpSchema';
 import { useSignup } from '@/hooks/useSignup';
-import { useGithubAuth } from '@/hooks/useGithubAuth';
-import { useGoogleAuth } from '@/hooks/useGoogleAuth';
-import { Button, Input } from '@/shared/ui';
+import { Button, Input, Text } from '@/shared/ui';
+import { AlternativeAuth } from '@/components/AlternativeAuth/AlternativeAuth';
+import { TextTheme } from '@/shared/ui/Text/Text';
 
 const SignupPage = () => {
   const { isLoading, onSignup } = useSignup();
-  const { onGithubAuth } = useGithubAuth();
-  const { onGoogleAuth } = useGoogleAuth();
+
   const {
     register,
     handleSubmit,
@@ -30,14 +28,21 @@ const SignupPage = () => {
   };
 
   return (
-    <div>
+    <div className="authForm">
+      <Text title="Create an account" />
+      <Text
+        text="Enter your email below to create your account"
+        theme={TextTheme.MUTED}
+        className="formText"
+      />
+      <AlternativeAuth />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>SignUp</h1>
         {isLoading && <div>Loading...</div>}
         <Input
           label="Username"
           type="text"
           placeholder="Vasya"
+          fullWidth
           register={register('username')}
           error={errors.username}
         />
@@ -45,6 +50,7 @@ const SignupPage = () => {
           label="Email"
           type="email"
           placeholder="sobaka@gmail.com"
+          fullWidth
           register={register('email')}
           error={errors.email}
         />
@@ -52,6 +58,7 @@ const SignupPage = () => {
           label="Password"
           type="password"
           placeholder="password"
+          fullWidth
           register={register('password')}
           error={errors.password}
         />
@@ -59,6 +66,7 @@ const SignupPage = () => {
           label="Confirm password"
           type="password"
           placeholder="confirm password"
+          fullWidth
           register={register('passwordConfirm')}
           error={errors.passwordConfirm}
         />
@@ -66,14 +74,6 @@ const SignupPage = () => {
           SignUp
         </Button>
       </form>
-      <GoogleButton
-        label="Sign up with Google"
-        type="dark"
-        onClick={onGoogleAuth}
-      />
-      <Button type="button" onClick={onGithubAuth}>
-        onGithub
-      </Button>
     </div>
   );
 };

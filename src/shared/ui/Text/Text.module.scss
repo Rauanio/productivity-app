@@ -1,0 +1,50 @@
+.title {
+    color: var(--primary-color);
+    font-weight: 700 !important;
+}
+
+.text {
+    color: var(--primary-color);
+}
+
+.muted {
+    .title {
+        color: var(--muted-foreground);
+    }
+
+    .text {
+        color: var(--muted-foreground);
+    }
+}
+
+.size_s {
+    .title {
+        font: var(--font-m);
+    }
+
+    .text {
+        font: var(--font-s);
+    }
+}
+
+.size_m {
+    .title {
+        font: var(--font-l);
+    }
+
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
