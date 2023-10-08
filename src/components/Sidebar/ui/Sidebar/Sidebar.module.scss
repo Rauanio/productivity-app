@@ -1,0 +1,54 @@
+.sidebar {
+    position: relative;
+    background-color: var(--foreground);
+    color: var(--primary-foreground);
+    width: 9.375rem;
+    height: 100vh;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding-top: 1rem;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.burgerMenu {
+    cursor: pointer;
+}
+
+.sidebarItem {
+    margin-top: 2rem;
+}
+
+.switchers {
+    position: absolute;
+    bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.collapsed {
+    width: 3.75rem;
+
+    .logo {
+        display: none;
+    }
+    
+    .sidebarItem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .switchers  {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+

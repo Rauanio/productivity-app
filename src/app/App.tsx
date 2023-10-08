@@ -1,3 +1,4 @@
+import { Toaster } from 'sonner';
 import { useTheme } from '@/hooks/useTheme';
 import { AppRouter } from './providers/router/AppRouter';
 
@@ -6,6 +7,7 @@ export function App() {
 
   return (
     <div className={`app ${theme}`}>
+      <Toaster theme={theme} />
       <AppRouter />
     </div>
   );

@@ -1,0 +1,25 @@
+.item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--accent-foreground-inverted);
+    padding-inline: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+   
+    &:hover {
+        background-color: var(--accent-inverted);
+        transition: all 0.2s;
+    }
+}
+
+.active {
+    background-color: var(--accent-inverted);
+}
+
+.collapsed {
+    p {
+        display: none;
+    }
+}

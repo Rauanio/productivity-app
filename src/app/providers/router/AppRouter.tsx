@@ -1,7 +1,9 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { routeConfig } from '@/shared/config/routeConfig';
-import { Layout } from '@/components/Layout';
+import { Layout } from '@/components/Layout/Layout';
+import { LoginPage } from '@/pages/LoginPage';
+import { SignupPage } from '@/pages/SignupPage';
 
 export const AppRouter = () => {
   return (
@@ -18,6 +20,8 @@ export const AppRouter = () => {
             />
           ))}
         </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </Suspense>
   );

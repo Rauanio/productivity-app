@@ -4,7 +4,6 @@ import { SignUpSchemaType, signUpSchema } from '@/shared/types/signUpSchema';
 import { useSignup } from '@/hooks/useSignup';
 import { Button, Input, Text } from '@/shared/ui';
 import { AlternativeAuth } from '@/components/AlternativeAuth/AlternativeAuth';
-import { TextTheme } from '@/shared/ui/Text/Text';
 
 const SignupPage = () => {
   const { isLoading, onSignup } = useSignup();
@@ -32,7 +31,7 @@ const SignupPage = () => {
       <Text title="Create an account" />
       <Text
         text="Enter your email below to create your account"
-        theme={TextTheme.MUTED}
+        variant="muted"
         className="formText"
       />
       <AlternativeAuth />

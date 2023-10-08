@@ -3,7 +3,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchemaType, loginSchema } from '@/shared/types/loginSchema';
 import { useLogin } from '@/hooks/useLogin';
 import { AppLink, Button, Input, Text } from '@/shared/ui';
-import { TextAlign, TextTheme } from '@/shared/ui/Text/Text';
 import { AlternativeAuth } from '@/components/AlternativeAuth/AlternativeAuth';
 import cls from './LoginPage.module.scss';
 
@@ -28,7 +27,7 @@ const LoginPage = () => {
       <Text title="Login to your account" />
       <Text
         text="Enter your email below to login on your account"
-        theme={TextTheme.MUTED}
+        variant="muted"
         className="formText"
       />
       <AlternativeAuth />
@@ -56,7 +55,7 @@ const LoginPage = () => {
       </form>
 
       <div className={cls.link}>
-        <Text text={`Don't have an account?`} align={TextAlign.CENTER} />
+        <Text text={`Don't have an account?`} align="center" />
         <AppLink to="/signup">Sign up</AppLink>
       </div>
     </div>

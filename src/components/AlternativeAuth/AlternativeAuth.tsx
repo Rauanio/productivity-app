@@ -1,8 +1,6 @@
 import { Github } from 'lucide-react';
 import { Button, Text } from '@/shared/ui';
-import { TextAlign, TextTheme } from '@/shared/ui/Text/Text';
 import cls from './AlternativeAuth.module.scss';
-import { ButtonTheme } from '@/shared/ui/Button/Button';
 import { useGithubAuth } from '@/hooks/useGithubAuth';
 import { useGoogleAuth } from '@/hooks/useGoogleAuth';
 
@@ -12,12 +10,12 @@ export const AlternativeAuth = () => {
   return (
     <>
       <div className={cls.alternativeBtns}>
-        <Button theme={ButtonTheme.OUTLINED} onClick={onGoogleAuth}>
+        <Button variant="outlined" onClick={onGoogleAuth}>
           Google
         </Button>
         <Button
           className={cls.github}
-          theme={ButtonTheme.OUTLINED}
+          variant="outlined"
           onClick={onGithubAuth}
         >
           <Github />
@@ -26,8 +24,8 @@ export const AlternativeAuth = () => {
       </div>
       <Text
         text="Or continue with"
-        theme={TextTheme.MUTED}
-        align={TextAlign.CENTER}
+        variant="muted"
+        align="center"
         className={cls.alternative}
       />
     </>

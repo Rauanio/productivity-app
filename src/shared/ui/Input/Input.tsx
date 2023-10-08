@@ -24,7 +24,7 @@ export const Input = memo((props: InputProps) => {
     register,
     fullWidth,
     error,
-    ...otherProps
+    ...restProps
   } = props;
 
   return (
@@ -36,7 +36,7 @@ export const Input = memo((props: InputProps) => {
         placeholder={placeholder}
         readOnly={readonly}
         className={clsx(cls.input, { [cls.fullWidth]: fullWidth }, [className])}
-        {...otherProps}
+        {...restProps}
       />
       {error && <p className={cls.error}>{error.message}</p>}
     </div>

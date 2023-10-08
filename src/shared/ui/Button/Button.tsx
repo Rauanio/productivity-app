@@ -2,25 +2,14 @@ import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import clsx from 'clsx';
 import cls from './Button.module.scss';
 
-export enum ButtonTheme {
-  CLEAR = 'clear',
-  CLEAR_INVERTED = 'clearInverted',
-  OUTLINED = 'outlined',
-  OUTLINED_iNVERTED = 'outlinedInverted',
-  CONTAINED = 'contained',
-  CONTAINED_INVERTED = 'containedInverted',
-}
+export type ButtonVariant = 'contained' | 'clear' | 'outlined';
 
-export enum ButtonSize {
-  S = 'size_s',
-  M = 'size_m',
-  L = 'size_l',
-}
+export type ButtonSize = 's' | 'm' | 'l';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   size?: ButtonSize;
-  theme?: ButtonTheme;
+  variant?: ButtonVariant;
   disabled?: boolean;
   fullWidth?: boolean;
   children: ReactNode;
@@ -29,12 +18,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = memo((props: ButtonProps) => {
   const {
     className,
-    size = ButtonSize.S,
-    theme = ButtonTheme.CONTAINED,
+    size = 's',
+    variant = 'contained',
     disabled,
     fullWidth,
     children,
-    ...otherProps
+    ...restProps
   } = props;
   return (
     <button
@@ -44,11 +33,11 @@ export const Button = memo((props: ButtonProps) => {
           [cls.disabled]: disabled,
           [cls.fullWidth]: fullWidth,
         },
-        [className, cls[theme], cls[size]]
+        [className, cls[variant], cls[size]]
       )}
       type="button"
       disabled={disabled}
-      {...otherProps}
+      {...restProps}
     >
       {children}
     </button>

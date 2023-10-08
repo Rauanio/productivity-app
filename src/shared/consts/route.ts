@@ -1,7 +1,7 @@
 export enum AppRoutes {
   MAIN = 'main',
-  SIGNUP = 'signup',
-  LOGIN = 'login',
+  // SIGNUP = 'signup',
+  // LOGIN = 'login',
   PROFILE = 'profle',
   KANBAN = 'kanban',
   TODO = 'todo',
@@ -11,8 +11,8 @@ export enum AppRoutes {
 
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
-  [AppRoutes.SIGNUP]: '/signup',
-  [AppRoutes.LOGIN]: '/login',
+  // [AppRoutes.SIGNUP]: '/signup',
+  // [AppRoutes.LOGIN]: '/login',
   [AppRoutes.PROFILE]: '/profile',
   [AppRoutes.KANBAN]: '/kanban',
   [AppRoutes.TODO]: '/todo',

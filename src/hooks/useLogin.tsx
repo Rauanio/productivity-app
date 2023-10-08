@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import { pb } from '@/shared/api/pocketbase';
 import { LoginSchemaType } from '@/shared/types/loginSchema';
 
@@ -11,12 +12,13 @@ export const useLogin = () => {
     setIsLoading(true);
     try {
       await pb.collection('users').authWithPassword(email, password);
+      navigate('/');
+      toast.success('You have successfully logged into your account');
     } catch (e) {
-      console.log(e);
+      toast.error('something went wrong while logged into your account');
     } finally {
       setIsLoading(false);
     }
-    navigate('/');
   }
 
   return {
