@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react';
+import { Chrome, Github } from 'lucide-react';
 import { Button, Text } from '@/shared/ui';
 import cls from './AlternativeAuth.module.scss';
 import { useGithubAuth } from '@/hooks/useGithubAuth';
@@ -10,15 +10,15 @@ export const AlternativeAuth = () => {
   return (
     <>
       <div className={cls.alternativeBtns}>
-        <Button variant="outlined" onClick={onGoogleAuth}>
+        <Button variant="outlined" onClick={onGoogleAuth} iconLeft={Chrome}>
           Google
         </Button>
         <Button
           className={cls.github}
           variant="outlined"
           onClick={onGithubAuth}
+          iconLeft={Github}
         >
-          <Github />
           Github
         </Button>
       </div>

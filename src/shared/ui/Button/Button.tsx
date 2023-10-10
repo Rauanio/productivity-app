@@ -1,8 +1,16 @@
 import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import clsx from 'clsx';
+import { LucideIcon } from 'lucide-react';
 import cls from './Button.module.scss';
+import { Icon } from '../Icon/Icon';
 
-export type ButtonVariant = 'contained' | 'clear' | 'outlined';
+export type ButtonVariant =
+  | 'primary'
+  | 'ghost'
+  | 'outlined'
+  | 'destructive'
+  | 'secondary'
+  | 'icon';
 
 export type ButtonSize = 's' | 'm' | 'l';
 
@@ -13,16 +21,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   fullWidth?: boolean;
   children: ReactNode;
+  iconLeft?: LucideIcon;
+  iconRight?: LucideIcon;
 }
 
 export const Button = memo((props: ButtonProps) => {
   const {
     className,
     size = 's',
-    variant = 'contained',
+    variant = 'primary',
     disabled,
     fullWidth,
     children,
+    iconLeft,
+    iconRight,
     ...restProps
   } = props;
   return (
@@ -39,7 +51,9 @@ export const Button = memo((props: ButtonProps) => {
       disabled={disabled}
       {...restProps}
     >
+      {iconLeft && <Icon className={cls.iconLeft} icon={iconLeft} />}
       {children}
+      {iconRight && <Icon className={cls.iconRight} icon={iconRight} />}
     </button>
   );
 });

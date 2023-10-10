@@ -7,7 +7,7 @@ export interface IconProps extends LucideProps {
 }
 
 export const Icon = memo(
-  ({ icon: IconComponent, size = 22, ...restProps }: IconProps) => {
+  ({ icon: IconComponent, size = 20, ...restProps }: IconProps) => {
     return <IconComponent size={size} {...restProps} />;
   }
 );

@@ -1,16 +1,72 @@
 .btn {
-    color: var(--primary-foreground);
-    background-color: var(--primary);
     border-radius: calc(var(--radius) - 2px);
     font-weight: 500;
-    outline: none;
-    cursor: pointer;
     border: 1px solid #e5e7eb;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0.5rem 1rem;
+    outline: none;
+    height: 2.5rem;
+    cursor: pointer;
+    // border: none;
+    
+    &:hover {
+        transition: opacity 0.15s ease-in-out;
+        opacity: 0.9;
+    }
 }    
+
+.primary {
+    color: var(--primary-foreground);
+    background-color: var(--primary);
+}
+
+.secondary {
+    color: var(--secondary-foreground);
+    background-color: var(--secondary);
+    border: none;
+}
+
+.destructive {
+    color: var(--destructive-foreground);
+    background-color: var(--destructive) ;
+    border: none;
+}
+
+.outlined,
+.ghost,
+.icon {
+    background-color: var(--background);
+    color: var(--card-foreground)
+}
+
+.ghost {
+    border: none;
+}
+
+.outlined {
+    border-color: var(--input);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        transition: background-color 0.15s ease-in-out;
+        background-color: var(--muted);
+    }
+}
+
+ .icon {
+    border-color: var(--input);
+    padding: 0.75rem;
+
+    &:hover {
+        transition: background-color 0.15s ease-in-out;
+        background-color: var(--muted);
+    }
+ }
+
 
 .s {
     font: var(--font-s);
@@ -24,33 +80,6 @@
     font: var(--font-l)
 }
 
-.contained {
-   &:hover {
-    transition: opacity 0.2s ease-in-out;
-    opacity: 0.9;
-   }
-}
-
-.outlined,
-.clear {
-    background-color: var(--background);
-    color: var(--card-foreground)
-}
-
-.outlined {
-    &:hover {
-        transition: background-color 0.2s ease-in-out;
-        background-color: var(--muted);
-       }
-    border-color: var(--input)
-}
-
-.clear {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
 .disabled {
     opacity: 0.6;
 }
@@ -59,7 +88,11 @@
     width: 100%;
 }
 
-.icon {
+.iconLeft {
     margin-right: 0.25rem;
+}
+
+.iconRight {
+    margin-left: 0.25rem;
 }
 

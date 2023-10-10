@@ -1,0 +1,51 @@
+.select {
+    position: relative;
+}
+
+.trigger {
+    background-color: var(--background);
+    border: 1px solid var(--input);
+    padding: 0.5rem 0.75rem;
+    border-radius: calc(var(--radius) - 2px);
+    width: 11.25rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.options {
+    position: absolute;
+    z-index: 10;
+    background-color: var(--background);
+    border: 1px solid var(--input);
+    border-radius: calc(var(--radius) - 2px);
+    width: 11.25rem;
+    margin-top: 0.25rem;
+    cursor: default;
+    outline: none;
+}
+
+.item {
+    padding: 0.5rem 1rem;
+    list-style: none;
+    border-radius: calc(var(--radius) - 2px) ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.25rem;
+}
+
+
+.active {
+    background-color: var(--muted);
+}
+
+.disabled {
+    opacity: 0.6;
+}
+
+.directionTop {
+    bottom: 100%;
+}

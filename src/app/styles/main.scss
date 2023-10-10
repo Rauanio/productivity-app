@@ -5,6 +5,7 @@
 
 body {
   font: var(--font-s);
+  font-weight: 400;
 }
 
 .app {
@@ -12,7 +13,6 @@ body {
   color: var(--primary);
   min-height: 100vh;
 }
-
 
 .authForm {
   max-width: 380px;

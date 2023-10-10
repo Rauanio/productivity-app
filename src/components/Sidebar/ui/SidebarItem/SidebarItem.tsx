@@ -15,13 +15,15 @@ export const SidebarItem = ({
   collapsed,
 }: SidebarItemProps) => {
   return (
-    <AppLink
-      activeClassName={cls.active}
-      className={clsx(cls.item, { [cls.collapsed]: collapsed }, [className])}
-      to={item.path}
-    >
-      <Icon icon={item.icon} />
-      <p>{item.name}</p>
-    </AppLink>
+    <div className={cls.wrapper}>
+      <AppLink
+        activeClassName={cls.active}
+        className={clsx(cls.item, { [cls.collapsed]: collapsed }, [className])}
+        to={item.path}
+      >
+        <Icon icon={item.icon} />
+        <p>{item.name}</p>
+      </AppLink>
+    </div>
   );
 };
