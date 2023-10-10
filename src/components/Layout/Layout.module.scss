@@ -2,8 +2,16 @@
     display: flex ;
 }
 
-
+header {
+    border-bottom: 1px solid var(--border);
+}
 
 main {
     padding: 1rem;
 }
+
+.main_content {
+    width: 100%;
+
+}
+

@@ -4,14 +4,13 @@ import clsx from 'clsx';
 import { Check, ChevronDown } from 'lucide-react';
 import cls from './Select.module.scss';
 import { Icon } from '@/shared/ui';
+import { SelectDirection } from '../../types/popup';
 
 export interface SelectItem {
   value: string;
   content: ReactNode;
   disabled?: boolean;
 }
-
-export type SelectDirection = 'top' | 'bottom';
 
 export interface SelectProps {
   items?: SelectItem[];

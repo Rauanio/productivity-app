@@ -7,7 +7,7 @@ export function App() {
 
   return (
     <div className={`app ${theme}`}>
-      <Toaster theme={theme} />
+      <Toaster richColors theme={theme} />
       <AppRouter />
     </div>
   );

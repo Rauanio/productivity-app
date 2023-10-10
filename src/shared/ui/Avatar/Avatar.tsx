@@ -11,8 +11,8 @@ export interface AvatarProps {
 export const Avatar = ({ className, src, alt, size }: AvatarProps) => {
   const styles = useMemo<CSSProperties>(() => {
     return {
-      width: size || 50,
-      height: size || 50,
+      width: size || 40,
+      height: size || 40,
     };
   }, [size]);
   return (
