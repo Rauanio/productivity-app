@@ -6,6 +6,7 @@ const MainPage = () => {
     <div className={cls.main}>
       <h1>User logged in : {pb.authStore.model?.email} </h1>
       MainPage 1231231
+      <div>Sula chort</div>
     </div>
   );
 };

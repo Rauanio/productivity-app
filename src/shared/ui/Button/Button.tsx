@@ -51,9 +51,11 @@ export const Button = memo((props: ButtonProps) => {
       disabled={disabled}
       {...restProps}
     >
-      {iconLeft && <Icon className={cls.iconLeft} icon={iconLeft} />}
+      {iconLeft && <Icon size={18} className={cls.iconLeft} icon={iconLeft} />}
       {children}
-      {iconRight && <Icon className={cls.iconRight} icon={iconRight} />}
+      {iconRight && (
+        <Icon size={18} className={cls.iconRight} icon={iconRight} />
+      )}
     </button>
   );
 });

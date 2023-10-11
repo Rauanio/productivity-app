@@ -1,2 +1,10 @@
 .KanbanPage {
 }
+
+.column_container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 1rem;
+}
