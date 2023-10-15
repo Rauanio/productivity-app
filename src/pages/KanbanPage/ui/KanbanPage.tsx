@@ -1,52 +1,115 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
+import {
+  DndContext,
+  DragEndEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  SortableContext,
+  arrayMove,
+  horizontalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { toast } from 'sonner';
+import clsx from 'clsx';
 import { Button } from '@/shared/ui';
 import { ColumnItem } from '@/components/ColumnItem/ColumnItem';
 import cls from './KanbanPage.module.scss';
-
-export type ColumnId = string | number;
-
-export interface Column {
-  id: ColumnId;
-  title: string;
-}
+import { Column } from '@/shared/types/column';
+import { pb } from '@/shared/api/pocketbase';
 
 const KanbanPage = () => {
   const [columns, setColumns] = React.useState<Column[]>([]);
+  const limit = columns.length >= 4;
 
-  const generateId = () => {
-    return Math.floor(Math.random() * 1001);
-  };
+  async function getColumns() {
+    return pb.collection('columns').getFullList();
+  }
 
-  const onCreateColumn = () => {
-    const newColumn: Column = {
-      id: generateId(),
+  // const getChanges = () => {
+  //   return pb.collection('columns');
+  // };
+
+  React.useEffect(() => {
+    getColumns().then((res) => setColumns(res));
+    // getChanges().subscribe('*', (change) => {
+    //   console.log(change);
+
+    //   setColumns([...columns, change]);
+    // });
+  }, []);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    })
+  );
+
+  const onCreateColumn = async () => {
+    if (limit) {
+      return toast.error('You can only create 4 columns');
+    }
+
+    const newColumn = {
       title: `Column ${columns.length + 1}`,
     };
 
-    setColumns([...columns, newColumn]);
+    const newCol = await pb.collection('columns').create(newColumn);
+    setColumns((oldCol) => [...oldCol, newCol]);
   };
 
-  const onDeleteColumn = (id: ColumnId) => {
-    setColumns(columns.filter((col) => col.id !== id));
+  const onDeleteColumn = async (id: string) => {
+    const del = await pb.collection('columns').delete(id);
+    if (del) {
+      setColumns(columns.filter((col) => col.id !== id));
+    }
+  };
+
+  const onDragEnd = ({ active, over }: DragEndEvent) => {
+    if (!over) return;
+
+    if (active.id === over?.id) return;
+
+    setColumns((column) => {
+      const activeColumnIndex = column.findIndex((col) => col.id === active.id);
+
+      const overColumnIndex = column.findIndex((col) => col.id === over?.id);
+
+      return arrayMove(column, activeColumnIndex, overColumnIndex);
+    });
   };
 
   return (
     <div>
-      <Button onClick={onCreateColumn} iconLeft={Plus}>
+      <Button
+        className={clsx(cls.btn, { [cls.limit]: limit })}
+        onClick={onCreateColumn}
+        iconLeft={Plus}
+      >
         Create column
       </Button>
-      <div className={cls.column_container}>
-        {columns.map((column) => {
-          return (
-            <ColumnItem
-              onDeleteColumn={onDeleteColumn}
-              column={column}
-              key={column.id}
-            />
-          );
-        })}
-      </div>
+      <DndContext onDragEnd={onDragEnd} sensors={sensors}>
+        <div className={cls.column_container}>
+          <SortableContext
+            strategy={horizontalListSortingStrategy}
+            items={columns}
+          >
+            {columns.map((column) => {
+              return (
+                <ColumnItem
+                  onDeleteColumn={onDeleteColumn}
+                  column={column}
+                  key={column.id}
+                />
+              );
+            })}
+          </SortableContext>
+        </div>
+      </DndContext>
     </div>
   );
 };

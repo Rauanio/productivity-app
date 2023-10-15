@@ -8,3 +8,11 @@
     width: 100%;
     margin-top: 1rem;
 }
+
+.limit {
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}

@@ -1,27 +1,47 @@
-import React from 'react';
 import { Edit, MoreVertical, Plus, Trash } from 'lucide-react';
-import { Column, ColumnId } from '@/pages/KanbanPage/ui/KanbanPage';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import React from 'react';
 import cls from './ColumnItem.module.scss';
 import { Button } from '@/shared/ui';
 import { Dropdown } from '@/shared/ui/Popups';
+import { Column } from '@/shared/types/column';
 
 export interface ColumnItemProps {
   column: Column;
-  onDeleteColumn: (id: ColumnId) => void;
+  onDeleteColumn: (id: string) => void;
 }
 
 export const ColumnItem = ({ column, onDeleteColumn }: ColumnItemProps) => {
+  const [editMode, setEditMode] = React.useState(false);
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: column.id,
+    });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  const onEditColumn = () => {
+    setEditMode(!editMode);
+  };
+
   return (
-    <div className={cls.item_container}>
-      <div className={cls.title}>
-        <div>{column.title}</div>
+    <div ref={setNodeRef} style={style} className={cls.item_container}>
+      <div {...attributes} {...listeners} className={cls.column_header}>
+        <div className={cls.title}>
+          {editMode ? <input value={column.title} /> : column.title}
+        </div>
         <Dropdown
           trigger={<MoreVertical size={18} cursor="pointer" />}
-          className={cls.drp}
+          className={cls.delete}
           items={[
             {
               content: 'Edit',
               icon: Edit,
+              onClick: () => onEditColumn(),
             },
             {
               content: 'Delete',

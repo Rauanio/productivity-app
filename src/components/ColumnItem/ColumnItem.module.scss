@@ -14,11 +14,17 @@
 }
 
 .title {
+    cursor: auto;
+    font-weight: 600;
+}
+
+.column_header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: grab;
 }
 
-.drp div button:last-child {
+.delete div button:last-child {
     color: var(--destructive);
 }
