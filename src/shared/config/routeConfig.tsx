@@ -1,13 +1,11 @@
 import { ProfilePage } from '@/pages/ProfilePage';
-import { KanbanPage } from '@/pages/KanbanPage';
 import { PomodoroPage } from '@/pages/PomodoroPage';
 import { TodoListPage } from '@/pages/TodoListPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-// import { SignupPage } from '@/pages/SignupPage';
-// import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
 import { AppRoutes, RoutePath } from '../consts/route';
 import { AppRoutesProps } from '../types/route';
+import { KanbanPage } from '@/pages/KanbanPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
@@ -15,14 +13,6 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <MainPage />,
     authOnly: true,
   },
-  // [AppRoutes.LOGIN]: {
-  //   path: RoutePath.login,
-  //   element: <LoginPage />,
-  // },
-  // [AppRoutes.SIGNUP]: {
-  //   path: RoutePath.signup,
-  //   element: <SignupPage />,
-  // },
   [AppRoutes.PROFILE]: {
     path: RoutePath.profle,
     element: <ProfilePage />,

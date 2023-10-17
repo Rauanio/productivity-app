@@ -11,20 +11,33 @@
     min-width: 15.625rem;
     height: 31.25rem;
     max-height: 31.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
 }
 
 .title {
     cursor: auto;
-    font-weight: 600;
+  
 }
 
 .column_header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.5rem;
     cursor: grab;
+    font-weight: 600;
 }
 
-.delete div button:last-child {
-    color: var(--destructive);
+.colorItem {
+    width: 0.5em;
+    height: 0.5rem;
+    border-radius: 50%;
+}
+
+.count {
+    background-color: var(--accent);
+    padding: 0 0.5rem;
+    border-radius: var(--radius) ;
 }
