@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
 import clsx from 'clsx';
-import { InputHTMLAttributes, memo } from 'react';
+import { InputHTMLAttributes, memo, useId } from 'react';
 import cls from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -27,10 +27,15 @@ export const Input = memo((props: InputProps) => {
     ...restProps
   } = props;
 
+  const id = useId();
+
   return (
     <div className={clsx(cls.inputWrapper, { [cls.readonly]: readonly })}>
-      <div className={cls.label}>{label}</div>
+      <label htmlFor={id} className={cls.label}>
+        {label}
+      </label>
       <input
+        id={id}
         {...register}
         type={type}
         placeholder={placeholder}

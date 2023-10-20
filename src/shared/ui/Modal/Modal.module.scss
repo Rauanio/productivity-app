@@ -1,0 +1,40 @@
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.content {
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    background-color: var(--background);
+    transform: scale(0.4);
+    transition: transform 0.2s;
+    border: 1px solid var(--border);
+    max-width: 425px;
+}
+
+.opened {
+    pointer-events: auto;
+    opacity: 1;
+    z-index: 10px;
+
+    .content {
+        transform: scale(1);
+    }
+}
+
+.isClosing {
+    .content {
+        transform: scale(0.9);
+    }
+}

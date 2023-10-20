@@ -1,6 +1,6 @@
 import { Menu } from '@headlessui/react';
 import clsx from 'clsx';
-import { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, useId } from 'react';
 import { LucideIcon } from 'lucide-react';
 import cls from './Dropdown.module.scss';
 import { AppLink, Icon } from '@/shared/ui';
@@ -36,13 +36,19 @@ export const Dropdown = ({
     'top right': cls.directionTopRight,
   };
 
+  const id = useId();
+
   const directionClasses = mapDirectionClass[direction];
 
   return (
     <Menu as="div" className={clsx(cls.dropdown, {}, [className])}>
       <Menu.Button className={cls.trigger}>{trigger}</Menu.Button>
       <Menu.Items className={clsx(cls.options, {}, [directionClasses])}>
-        {label && <span className={cls.label}>{label}</span>}
+        {label && (
+          <label htmlFor={id} className={cls.label}>
+            {label}
+          </label>
+        )}
         {items?.map((item) => {
           const content = ({ active }: { active: boolean }) => (
             <button

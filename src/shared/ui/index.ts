@@ -5,3 +5,6 @@ export { Text } from './Text/Text';
 export { AppLink } from './AppLink/AppLink';
 export { ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';
 export { LangSwitcher } from './LangSwitcher/LangSwitcher';
+export { Avatar } from './Avatar/Avatar';
+export { Modal } from './Modal/Modal';
+export { Portal } from './Portal/Portal';

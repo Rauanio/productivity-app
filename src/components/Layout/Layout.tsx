@@ -7,7 +7,6 @@ export const Layout = () => {
   return (
     <div className={cls.container}>
       <Sidebar />
-
       <div className={cls.main_content}>
         <header>
           <Header />

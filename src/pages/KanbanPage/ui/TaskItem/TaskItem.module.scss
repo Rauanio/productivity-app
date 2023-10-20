@@ -1,10 +1,24 @@
 .taskWrapper {
     border-radius: var(--radius);
-    background-color: var(--muted);   
-    height: 5rem;
-}
-
-.task {
+    border: 1px solid var(--border);
+    min-height: 5rem;
     padding: 0.5rem;
 }
 
+.title {
+    margin-top: 0.5rem;
+}
+
+.tag {
+    padding: 0.25rem 0.5rem;
+    border-radius: calc(var(--radius));
+    font-weight: 500;
+    color: hsl(240 5.9% 10%);
+    background-color: var(--task-blue);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
