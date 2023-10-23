@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import clsx from 'clsx';
+import { X } from 'lucide-react';
 import cls from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
 import { Overlay } from '../Overlay/Overlay';
@@ -18,7 +19,7 @@ export const Modal = (props: ModalProps) => {
   const { isOpen, onClose, children, className, lazy } = props;
   const { close, isClosing, isMounted } = useModal({
     onClose,
-    animationDelay: 200,
+    animationDelay: 300,
     isOpen,
   });
 
@@ -35,7 +36,10 @@ export const Modal = (props: ModalProps) => {
     <Portal>
       <div className={clsx(cls.modal, mods, [className])}>
         <Overlay close={close} />
-        <div className={cls.content}>{children}</div>
+        <div className={cls.content}>
+          <X className={cls.icon} size={20} onClick={close} />
+          {children}
+        </div>
       </div>
     </Portal>
   );

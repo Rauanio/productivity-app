@@ -14,11 +14,12 @@
 }
 
 .content {
+    position: relative;
     padding: 1.5rem;
     border-radius: var(--radius);
     background-color: var(--background);
-    transform: scale(0.4);
-    transition: transform 0.2s;
+    transform: scale(0.8);
+    transition: all 0.2s ease-in-out;
     border: 1px solid var(--border);
     max-width: 425px;
 }
@@ -35,6 +36,13 @@
 
 .isClosing {
     .content {
-        transform: scale(0.9);
+        transform: scale(0.95);
     }
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
 }

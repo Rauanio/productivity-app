@@ -8,3 +8,5 @@ export { LangSwitcher } from './LangSwitcher/LangSwitcher';
 export { Avatar } from './Avatar/Avatar';
 export { Modal } from './Modal/Modal';
 export { Portal } from './Portal/Portal';
+export { Spinner } from './Spinner/Spinner';
+export { PageLoader } from './PageLoader/PageLoader';

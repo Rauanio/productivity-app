@@ -1,9 +1,8 @@
 import { Edit, MoreVertical, Trash } from 'lucide-react';
-import React from 'react';
-
+import React, { Suspense } from 'react';
 import { Task } from '@/pages/KanbanPage';
 import { Dropdown } from '@/shared/ui/Popups';
-import { Modal } from '@/shared/ui';
+import { Modal, Spinner } from '@/shared/ui';
 import { pb } from '@/shared/api/pocketbase';
 import { TaskSchemaType } from '@/shared/types/taskSchema';
 import cls from './TaskItem.module.scss';
@@ -15,20 +14,16 @@ interface TaskProps {
 }
 
 export const TaskItem = ({ task, onDeleteTask }: TaskProps) => {
-  const [isEditModal, setEditModal] = React.useState(false);
+  const [editModal, setEditModal] = React.useState(false);
 
   const onEditTask = (data: TaskSchemaType) => {
     pb.collection('tasks').update(task.id ?? '', data);
     window.location.reload();
   };
 
-  const onOpenModal = () => {
-    setEditModal(true);
-  };
+  const onOpenModal = () => setEditModal(true);
 
-  const onCloseModal = () => {
-    setEditModal(false);
-  };
+  const onCloseModal = () => setEditModal(false);
 
   return (
     <div className={cls.taskWrapper}>
@@ -48,9 +43,13 @@ export const TaskItem = ({ task, onDeleteTask }: TaskProps) => {
           ]}
           trigger={<MoreVertical className={cls.icon} size={16} />}
         />
-        <Modal lazy isOpen={isEditModal} onClose={onCloseModal}>
-          <EditTaskForm onEditTask={onEditTask} />
-        </Modal>
+        {editModal && (
+          <Modal lazy isOpen={editModal} onClose={onCloseModal}>
+            <Suspense fallback={<Spinner />}>
+              <EditTaskForm onEditTask={onEditTask} />
+            </Suspense>
+          </Modal>
+        )}
       </div>
       <h3 className={cls.title}>{task.title}</h3>
       <p className={cls.desc}>{task.desc}</p>

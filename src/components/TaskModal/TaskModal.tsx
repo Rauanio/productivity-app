@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Modal } from '@/shared/ui';
+import { Modal, Spinner } from '@/shared/ui';
 import { Column } from '@/pages/KanbanPage';
 import { TaskForm } from '../TaskForm/TaskForm';
 
@@ -12,7 +12,7 @@ export interface ModalProps {
 export const TaskModal = ({ taskModal, onCloseModal, column }: ModalProps) => {
   return (
     <Modal lazy isOpen={taskModal} onClose={onCloseModal}>
-      <Suspense>
+      <Suspense fallback={<Spinner />}>
         <TaskForm column={column} />
       </Suspense>
     </Modal>
