@@ -7,6 +7,7 @@ import { Button } from '@/shared/ui';
 import { Column, TaskItem } from '@/pages/KanbanPage';
 import { useTasks } from '@/hooks/useTasks';
 import { TaskModal } from '@/components/TaskModal/TaskModal';
+import { pb } from '@/shared/api/pocketbase';
 
 export interface ColumnItemProps {
   column: Column;
@@ -44,6 +45,10 @@ export const ColumnItem = ({ column }: ColumnItemProps) => {
     setTaskModal(true);
   }, []);
 
+  const onDeleteTask = (id?: string) => {
+    pb.collection('tasks').delete(id!);
+  };
+
   return (
     <div ref={setNodeRef} style={style} className={cls.item_container}>
       <div {...attributes} {...listeners} className={cls.column_header}>
@@ -71,7 +76,7 @@ export const ColumnItem = ({ column }: ColumnItemProps) => {
       )}
       <div className={cls.column_item}>
         {filteredTask.map((task) => (
-          <TaskItem key={task.id} task={task} />
+          <TaskItem key={task.id} task={task} onDeleteTask={onDeleteTask} />
         ))}
       </div>
     </div>

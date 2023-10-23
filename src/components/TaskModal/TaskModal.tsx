@@ -11,7 +11,7 @@ export interface ModalProps {
 
 export const TaskModal = ({ taskModal, onCloseModal, column }: ModalProps) => {
   return (
-    <Modal isOpen={taskModal} onClose={onCloseModal}>
+    <Modal lazy isOpen={taskModal} onClose={onCloseModal}>
       <Suspense>
         <TaskForm column={column} />
       </Suspense>

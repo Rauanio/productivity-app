@@ -22,3 +22,11 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.icon  {
+    cursor: pointer;
+}
+
+.dropdown div button:last-child  {
+    color: var(--destructive);
+}

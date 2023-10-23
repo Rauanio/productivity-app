@@ -5,16 +5,12 @@
 }
 
 .column_item {
-    border: 1px solid var(--border);
-    background-color: var(--card);
-    border-radius: calc(var(--radius) + 2px);
     min-width: 15.625rem;
-    height: 31.25rem;
-    max-height: 31.25rem;
+    height: 30rem;
+    max-height: 30rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    padding: 0.5rem;
 }
 
 .title {
